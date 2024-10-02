@@ -1,0 +1,61 @@
+Last login: Wed Oct  2 11:27:00 on ttys000
+dave@daves-MBP ~ % cd Desktop/my-projects/ocr-tables 
+dave@daves-MBP ocr-tables % ls -a
+.					.DS_Store
+..					ocr-extract-table-from-image-python
+dave@daves-MBP ocr-tables % cd ocr-extract-table-from-image-python 
+dave@daves-MBP ocr-extract-table-from-image-python % cp .gitignore
+usage: cp [-R [-H | -L | -P]] [-fi | -n] [-aclpSsvXx] source_file target_file
+       cp [-R [-H | -L | -P]] [-fi | -n] [-aclpSsvXx] source_file ... target_directory
+dave@daves-MBP ocr-extract-table-from-image-python % ls -a
+.			TableExtractor.py	ocr_slices
+..			TableLinesRemover.py	output.csv
+.DS_Store		__pycache__		process_images
+.git			image			readme.md
+OcrToTableTool.py	main.py
+dave@daves-MBP ocr-extract-table-from-image-python % cd ..
+dave@daves-MBP ocr-tables % cd ..
+dave@daves-MBP my-projects % ls   
+Product_Brochures_C_CAB7530_A.pdf	multi3DIC
+deep_learning_python			ocr-tables
+digitize-data-docs			origami_structures
+dsp					solenoid_pump
+ear					surf-projects
+eclipse-workspace			surfer_detector
+eclipse-workspace-copy			test
+game_dev				ultimate_ear_case
+job_applications			website
+modelling_frisbee
+dave@daves-MBP my-projects % cd digitize-data-docs 
+dave@daves-MBP digitize-data-docs % ls
+README.md	exp_cv2.py	exp_doctr.py	gitexclude	main.py
+dave@daves-MBP digitize-data-docs % cp .gitignore 
+usage: cp [-R [-H | -L | -P]] [-fi | -n] [-aclpSsvXx] source_file target_file
+       cp [-R [-H | -L | -P]] [-fi | -n] [-aclpSsvXx] source_file ... target_directory
+dave@daves-MBP digitize-data-docs % vim .gitignore 
+
+[General dir for excluded files]
+gitexclude/*
+
+[OS Files]
+.DS_Store
+.idea/*
+*.swp
+
+[Data Files]
+*.mat
+*.json
+*.csv
+test_files/*
+plots/*
+*.png
+
+[experiment files]
+exp_*
+
+[Python]
+*/__pycache__/*
+modules/__pycache__/*
+~                                                                               
+".gitignore" 22L, 216B
+
