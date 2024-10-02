@@ -1,7 +1,13 @@
 import numpy as np
 
-def init_network(num_inputs, num_hidden_layers, num_nodes_hidden, num_nodes_output):
-	
+def init_network(num_inputs: int,
+				 num_hidden_layers: list[int],
+				 num_nodes_hidden: int,
+				 num_nodes_output: int) -> dict:
+	"""
+	Create a dict of a network with set number of layers and nodes, 
+	initialising with random values
+	"""	
 
 	network = {}  # Empty dict to store network
 	num_nodes_previous = num_inputs  # Needed initialising for loop
@@ -31,10 +37,11 @@ def init_network(num_inputs, num_hidden_layers, num_nodes_hidden, num_nodes_outp
 	return network
 
 
-num_inputs = 2 # number of inputs
-num_hidden_layers = 2 # number of hidden layers
-num_nodes_hidden  = [2, 2] # number of nodes in each hidden layer
-num_nodes_output = 1 # number of nodes in the output layer	
+# Test
+network = init_network(num_inputs = 5,
+				   	   num_hidden_layers = 3,
+				   	   num_nodes_hidden = [3,2,3],
+				   	   num_nodes_output = 1)
 
-print(init_network(num_inputs, num_hidden_layers, num_nodes_hidden, num_nodes_output))
+print(network)
 
