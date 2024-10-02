@@ -1,4 +1,5 @@
 import numpy as np
+from random import seed
 
 def init_network(num_inputs: int,
 				 num_hidden_layers: list[int],
@@ -37,11 +38,70 @@ def init_network(num_inputs: int,
 	return network
 
 
-# Test
+def apply_weighted_sum(inputs, weights, bias):
+	"""
+	Weighted sum for a node
+	"""
+
+	return np.sum(inputs * weights) + bias
+
+
+def apply_node_activation(weighted_sum):
+	"""
+	Apply activation function to weighted sum of node
+
+	Sigmoid function
+	"""	
+
+	return 1.0 / (1.0 + np.exp(-1 * weighted_sum))
+
+
+def apply_forward_prop(network, inputs):
+	"""
+	Forward propogation of a network:
+
+	1. input layer -> weighted sum at nodes -> node outputs
+	2. node_output_prev -> input to next layer
+	repeat 1-2 for next layer
+	terminate at output layer.
+	"""
+
+	layer_inputs = list(inputs)  # Input layer is input for first hidden layer
+	
+	for layer in network:
+		
+		layer_data = network[layer]
+		
+		layer_outputs = []
+		for layer_node in layer_data:
+			node_data = layer_data[layer_node]
+			
+			# Compute weighted sum and output of each node
+			node_weighted_sum = apply_weighted_sum(layer_inputs, 
+												   node_data['weights'],
+												   node_data['bias'])
+			node_output = apply_node_activation(node_weighted_sum)
+			layer_outputs.append(np.around(node_output[0], decimals=4))
+			
+		if layer != 'output':
+			print(f'Outputs of nodes in hidden layer {layer.split('_')[1]}: {layer_outputs}')
+
+		layer_inputs = layer_outputs  # Setting output of layer to be input of next layer
+	
+	network_predictions = layer_outputs
+	return network_predictions
+	
+# Initialise network
 network = init_network(num_inputs = 5,
 				   	   num_hidden_layers = 3,
 				   	   num_nodes_hidden = [3,2,3],
 				   	   num_nodes_output = 1)
 
-print(network)
+# Create inputs
+np.random.seed(12)
+inputs = np.around(np.random.uniform(size=5), decimals=2)
 
+# Forward propogate
+predictions = apply_forward_prop(network, inputs)
+
+print(predictions)
