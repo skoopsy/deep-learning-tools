@@ -13,6 +13,7 @@ gitexclude/*
 test_files/*
 plots/*
 *.png
+*.keras
 
 [experiment files]
 exp_*
