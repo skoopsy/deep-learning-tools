@@ -72,7 +72,11 @@ plt.subplots_adjust(hspace=0.5)
 plt.show()
 
 # Save trained model
-model.save('classification_model.h5')
+print("Saving model...")
+model_save_name = 'classification_model.keras'
+#model.save(model_save_name)  # Legacy save and file format (.h5)
+keras.saving.save_model(model, model_save_name)
+print(f"Model saved as: {model_save_name}")
 
 """
 For reloading the trained model:
