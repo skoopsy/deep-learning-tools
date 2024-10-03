@@ -36,6 +36,10 @@ def build_convolutional_model():
 	model.add(Conv2D(16, (5, 5), strides=(1, 1), activation='relu', input_shape=(28, 28, 1)))
 	model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
 
+	# Conv layer with 8 filters
+	model.add(Conv2D(8, (2, 2), activation='relu'))
+	model.add(MaxPooling2D(pool_size=(2,2), strides=(2,2)))
+
 	# Fully connected layer
 	model.add(Flatten())
 	model.add(Dense(100, activation='relu'))
